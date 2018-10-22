@@ -21,7 +21,7 @@ function addArtworkData($formData) {
   $newId = $latestId + 1;
 
   savePixelColors( $_POST['url'], $newId );
-  $paletteColors = getHistogramPalette('data/'.$newId.'.csv');
+  $paletteColors = getHistogramPalette($newId);
 
   //Check if artwork with this url exists
   foreach($data["artworks"] as $artwork) {
@@ -146,14 +146,14 @@ function savePixelColors($img, $newId) {
 
       $colorIndex = imagecolorat($im, $x, $y);
       $colorRGB = imagecolorsforindex($im, $colorIndex);
-      $colorData[] = [$colorRGB['red'],$colorRGB['green'],$colorRGB['blue']];
+      $colorData[] = [$colorRGB['red'],$colorRGB['green'],$colorRGB['blue'],$x,$y];
 
     }
   }
 
-  $csv = "r,g,b\n";//Column headers
+  $csv = "r,g,b,x,y\n";//Column headers
   foreach ($colorData as $record){
-      $csv.= $record[0].','.$record[1].','.$record[2]."\n"; //Append data to csv
+      $csv.= $record[0].','.$record[1].','.$record[2].','.$record[3].','.$record[4]."\n"; //Append data to csv
   }
 
   $csv_handler = fopen('data/'.$newId.'.csv','w');
@@ -161,13 +161,13 @@ function savePixelColors($img, $newId) {
   fclose ($csv_handler);
 }
 
-function getHistogramPalette($csv) {
+function getHistogramPalette($artworkID) {
 
   $bucketPerDimension = 2;
   $bucketMax = 256;
   $bucketSize = $bucketMax / $bucketPerDimension;
 
-  $csvFile = file($csv);
+  $csvFile = file('data/'.$artworkID.'.csv');
   $buckets = array();
   $allPixelsSize = 0;
   foreach ($csvFile as $line => $pixel) {
@@ -182,6 +182,8 @@ function getHistogramPalette($csv) {
     }
   }
   $averageColors = getBucketsAverageColor($buckets);
+  // Save mini color partition images
+  saveArtworkColorPartitions($artworkID, $buckets);
 
   usort($averageColors, function($a, $b) {
     return $b[3] - $a[3];
@@ -220,6 +222,25 @@ function getBucketsAverageColor($buckets) {
     array_push($averageColors, [$bucketAverageRed,$bucketAverageBlue,$bucketAverageGreen,$bucketSize]);
   }
   return $averageColors;
+}
+
+// Save mini color partition images
+function saveArtworkColorPartitions($artworkID, $buckets) {
+  $csvFile = file("data/".$artworkID.".csv");
+  $endPixel = explode(",", end($csvFile));
+  $width = (int)$endPixel[3];
+  $height = (int)$endPixel[4];
+
+  $fileNo = 1;
+  foreach ($bucket as $key => $pixel) {
+    $im = imagecreatetruecolor($width, $height);
+    $color = imagecolorallocate($im, $pixel[0], $pixel[1], $pixel[2]);
+    imagesetpixel($im , $pixel[3] , $pixel[4] , $color );
+    $save = "data/".$artworkID."-".$fileNo.".png";
+    imagepng($im, $save);
+    $fileNo++
+  }
+
 }
 
 

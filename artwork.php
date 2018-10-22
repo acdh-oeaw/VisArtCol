@@ -102,6 +102,7 @@
                   }
                 }
                 ?>
+                <img src="<?php echo getArtworkColorPartitions($artworkID); ?>" alt="<?php echo $artwork["title"]; ?>" />
                 </div>
               </div>
               <div class="col-md-8 col-lg-8 artwork-plot-container">
