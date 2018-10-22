@@ -70,7 +70,6 @@
         <main class="site-main" id="main" role="main">
           <article>
           <?php
-            savePixelColors('https://upload.wikimedia.org/wikipedia/commons/d/de/Egon_Schiele_075.jpg', 1);
           if ( isset( $_POST['url'] ) ) {
             addArtworkData( $_POST );
             echo '

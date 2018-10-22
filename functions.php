@@ -232,13 +232,17 @@ function saveArtworkColorPartitions($artworkID, $buckets) {
   $height = (int)$endPixel[4];
 
   $fileNo = 1;
-  foreach ($bucket as $key => $pixel) {
+  foreach ($buckets as $bucketIndex => $bucket) {
     $im = imagecreatetruecolor($width, $height);
-    $color = imagecolorallocate($im, $pixel[0], $pixel[1], $pixel[2]);
-    imagesetpixel($im , $pixel[3] , $pixel[4] , $color );
+    $white = imagecolorallocate($im, 255, 255, 255);
+    imagefill($im, 0, 0, $white);
+    foreach ($bucket as $key => $pixel) {
+      $color = imagecolorallocate($im, $pixel[0], $pixel[1], $pixel[2]);
+      imagesetpixel($im , $pixel[3] , $pixel[4] , $color );
+    }
     $save = "data/".$artworkID."-".$fileNo.".png";
     imagepng($im, $save);
-    $fileNo++
+    $fileNo++;
   }
 
 }
