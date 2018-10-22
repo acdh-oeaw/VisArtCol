@@ -91,18 +91,20 @@
                   // Show max 5 colors
                   if ($i < 5) {
                     $colorRatio = $rgbPalette[3] * 100;
-                    $hexColor = sprintf("#%02x%02x%02x", $rgbPalette[0], $rgbPalette[1], $rgbPalette[2]);
+                    $hexColor = sprintf("%02x%02x%02x", $rgbPalette[0], $rgbPalette[1], $rgbPalette[2]);
                     echo '
                       <div class="palette-swatch">
                         <div class="palette-swatch-color" style="background:rgb('.$rgbPalette[0].','.$rgbPalette[1].','.$rgbPalette[2].');"></div>
                         <div class="palette-swatch-ratio">'.$colorRatio.'%</div>
-                        <div class="palette-swatch-hex">'.$hexColor.'</div>
+                        <div class="palette-swatch-hex">#'.$hexColor.'</div>
                       </div>
+                    ';
+                    echo '
+                     <img src="data/'.$artworkID.'-'.$hexColor.'.png" alt="'.$artwork["title"].'" />
                     ';
                   }
                 }
                 ?>
-                <img src="<?php echo getArtworkColorPartitions($artworkID); ?>" alt="<?php echo $artwork["title"]; ?>" />
                 </div>
               </div>
               <div class="col-md-8 col-lg-8 artwork-plot-container">

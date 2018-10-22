@@ -181,9 +181,7 @@ function getHistogramPalette($artworkID) {
       array_push($buckets[$pixelBucketIndex], $pixel);
     }
   }
-  $averageColors = getBucketsAverageColor($buckets);
-  // Save mini color partition images
-  saveArtworkColorPartitions($artworkID, $buckets);
+  $averageColors = computeBucketsAverageColor($artworkID, $buckets);
 
   usort($averageColors, function($a, $b) {
     return $b[3] - $a[3];
@@ -203,9 +201,19 @@ function getPixelBucketIndex($pixel, $bucketSize) {
   return $pixelBucketIndex;
 }
 
-function getBucketsAverageColor($buckets) {
+function computeBucketsAverageColor($artworkID, $buckets) {
+  // Save mini color partition images
+  $csvFile = file("data/".$artworkID.".csv");
+  $endPixel = explode(",", end($csvFile));
+  $width = (int)$endPixel[3];
+  $height = (int)$endPixel[4];
+
   $averageColors = array();
   foreach ($buckets as $bucketIndex => $bucket) {
+    $im = imagecreatetruecolor($width, $height);
+    $white = imagecolorallocate($im, 255, 255, 255);
+    imagefill($im, 0, 0, $white);
+
     $bucketSize = 0;
     $redSum = 0;
     $blueSum = 0;
@@ -215,37 +223,20 @@ function getBucketsAverageColor($buckets) {
       $redSum += $pixel[0];
       $blueSum += $pixel[1];
       $greenSum += $pixel[2];
+
+      $color = imagecolorallocate($im, $pixel[0], $pixel[1], $pixel[2]);
+      imagesetpixel($im , $pixel[3] , $pixel[4] , $color);
     }
     $bucketAverageRed = round($redSum / $bucketSize);
     $bucketAverageBlue = round($blueSum / $bucketSize);
     $bucketAverageGreen = round($greenSum / $bucketSize);
     array_push($averageColors, [$bucketAverageRed,$bucketAverageBlue,$bucketAverageGreen,$bucketSize]);
+
+    $hexColor = sprintf("%02x%02x%02x", $bucketAverageRed, $bucketAverageBlue, $bucketAverageGreen);
+    $save = "data/".$artworkID."-".$hexColor.".png";
+    imagepng($im, $save);
   }
   return $averageColors;
 }
-
-// Save mini color partition images
-function saveArtworkColorPartitions($artworkID, $buckets) {
-  $csvFile = file("data/".$artworkID.".csv");
-  $endPixel = explode(",", end($csvFile));
-  $width = (int)$endPixel[3];
-  $height = (int)$endPixel[4];
-
-  $fileNo = 1;
-  foreach ($buckets as $bucketIndex => $bucket) {
-    $im = imagecreatetruecolor($width, $height);
-    $white = imagecolorallocate($im, 255, 255, 255);
-    imagefill($im, 0, 0, $white);
-    foreach ($bucket as $key => $pixel) {
-      $color = imagecolorallocate($im, $pixel[0], $pixel[1], $pixel[2]);
-      imagesetpixel($im , $pixel[3] , $pixel[4] , $color );
-    }
-    $save = "data/".$artworkID."-".$fileNo.".png";
-    imagepng($im, $save);
-    $fileNo++;
-  }
-
-}
-
 
 ?>
