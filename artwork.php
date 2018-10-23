@@ -17,7 +17,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="Fundament WP - Example HTML Page">
     <link rel="profile" href="http://gmpg.org/xfn/11">
-    <title><?php echo $artwork["title"]; ?></title>
+    <title>visartist - <?php echo $artwork["title"]; ?></title>
     <link rel="stylesheet" id="fundament-styles"  href="fundament/css/fundament.min.css" type="text/css"/>
     <!-- app.css -->
     <link rel="stylesheet" id="app-styles"  href="app.css" type="text/css"/>
@@ -32,7 +32,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container" >
             <!-- Your site title as branding in the menu -->
-            <a href="/" class="navbar-brand custom-logo-link" rel="home" itemprop="url"><img src="images/visartcol-logo.svg" class="img-fluid" alt="VisArtCol Logo" itemprop="logo" /></a><!-- end custom logo -->
+            <a href="/" class="navbar-brand custom-logo-link" rel="home" itemprop="url"><img src="images/visartist-logo.svg" class="img-fluid" alt="visartist Logo" itemprop="logo" /></a><!-- end custom logo -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
