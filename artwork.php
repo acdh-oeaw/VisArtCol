@@ -78,13 +78,32 @@
       <div class="col-md-12 col-lg-12 content-area" id="primary">
         <main class="site-main" id="main" role="main">
           <article>
-            <header class="entry-header text-center">
+            <header class="entry-header text-center pt-2 pb-4">
               <h2><?php echo $artwork["title"].", ".$artwork["year"]; ?></h2>
-              <h4><?php echo $artwork["artist"]; ?></h3>
+              <h5>by <?php echo $artwork["artist"]; ?></h5>
             </header>
             <div class="row">
               <div class="col-md-4 col-lg-4 artwork-visual-container">
-                <img src="<?php echo $artwork["imgURL"]; ?>" alt="<?php echo $artwork["title"]; ?>" />
+                <h6 class="component-heading">Artwork Overview</h6>
+                <div class="frame">
+                  <div class="space">
+                    <div class="artwork">
+                      <img src="<?php echo $artwork["imgURL"]; ?>" alt="<?php echo $artwork["title"]; ?>" />
+                    </div>
+                  </div>
+                </div>
+                <div class="artwork-info">
+                  <div class="artist-name"><strong><?php echo $artwork["artist"]; ?></strong></div>
+                  <div class="artwork-title-year"><strong><em><?php echo $artwork["title"]; ?></em></strong>, <?php echo $artwork["year"]; ?></div>
+                  <div class="artwork-medium"><?php echo $artwork["medium"]; ?></div>
+                  <div class="artwork-dimensions"><?php echo $artwork["dimensions"]; ?></div>
+                  <div class="artwork-location"><?php echo $artwork["currentLocation"]; ?></div>
+                </div>
+              </div>
+              <div class="col-md-8 col-lg-8 artwork-plot-container">
+                <h6 class="component-heading">Descriptive Color Statistics</h6>
+                <div id="#artwork-plot"></div>
+                <?php echo getArtwork3DPlot($artworkID); ?>
                 <div class="artwork-palette">
                 <?php
                 foreach ($artwork["rgbPalette"] as $i => $rgbPalette) {
@@ -106,10 +125,6 @@
                 }
                 ?>
                 </div>
-              </div>
-              <div class="col-md-8 col-lg-8 artwork-plot-container">
-                <div id="#artwork-plot"></div>
-                <?php echo getArtwork3DPlot($artworkID); ?>
               </div>
             </div><!-- .row -->
           </article>
