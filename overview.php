@@ -1,6 +1,7 @@
 <?php
   include("functions.php");
   $artworks = getArtworkData("all");
+  $artists = getArtistData("all");
 ?>
 <!DOCTYPE html>
 <html lang="en-US">
@@ -75,32 +76,58 @@
           <article>
             <header class="entry-header text-center">
               <h2>Overview</h2>
-              <h4>All works</h3>
             </header>
             <div class="row">
-              <?php foreach ($artworks as $artwork) { ?>
-              <div class="col-md-4 col-lg-4">
-                <a href="<?php echo "artwork.php?artworkID=".$artwork["id"]; ?>"><img src="<?php echo $artwork["imgURL"]; ?>" alt="<?php echo $artwork["title"]; ?>" /></a>
-                <div class="artwork-palette">
-                <?php
-                foreach ($artwork["rgbPalette"] as $i => $rgbPalette) {
-                  // Show max 5 colors
-                  if ($i < 5) {
-                    $colorRatio = $rgbPalette[3] * 100;
-                    $hexColor = sprintf("#%02x%02x%02x", $rgbPalette[0], $rgbPalette[1], $rgbPalette[2]);
-                    echo '
-                      <div class="palette-swatch">
-                        <div class="palette-swatch-color" style="background:rgb('.$rgbPalette[0].','.$rgbPalette[1].','.$rgbPalette[2].');"></div>
-                        <div class="palette-swatch-ratio">'.$colorRatio.'%</div>
-                        <div class="palette-swatch-hex">'.$hexColor.'</div>
+              <div class="col-md-4 col-lg-2">
+                <h6 class="component-heading">Explore Artists</h6>
+                <?php foreach ($artists as $artist) { ?>
+                  <a class="d-flex no-decoration align-items-center" href="<?php echo "artist.php?artistID=".$artist["id"]; ?>">
+                    <div class="artist-photo mini">
+                      <img src="<?php echo $artist["imgURL"]; ?>" alt="<?php echo $artist["name"]; ?>" />
+                    </div>
+                    <div class="artist-name"><?php echo $artist["name"]; ?></div>
+                  </a>
+                <?php } ?>
+              </div>
+              <div class="col-md-8 col-lg-10">
+                <h6 class="component-heading">Explore Artworks</h6>
+                <div class="row">
+                <?php foreach ($artworks as $artwork) { ?>
+                  <div class="col-md-4 col-lg-4">
+                    <a class="no-decoration" href="<?php echo "artwork.php?artworkID=".$artwork["id"]; ?>">
+                      <div class="multi-artwork-container">
+                        <div class="frame">
+                          <div class="space">
+                            <div class="artwork">
+                              <img src="<?php echo $artwork["imgURL"]; ?>" alt="<?php echo $artwork["title"]; ?>" />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="artwork-info">
+                          <div class="artist-name"><strong><?php echo $artwork["artist"]; ?></strong></div>
+                          <div class="artwork-title-year"><strong><em><?php echo $artwork["title"]; ?></em></strong>, <?php echo $artwork["year"]; ?></div>
+                          <?php
+                          foreach ($artwork["rgbPalette"] as $i => $rgbPalette) {
+                            // Show max 5 colors
+                            if ($i < 5) {
+                              $colorRatio = $rgbPalette[3] * 100;
+                              $hexColor = sprintf("%02x%02x%02x", $rgbPalette[0], $rgbPalette[1], $rgbPalette[2]);
+                              echo '
+                                <div class="palette-swatch mini d-inline-block">
+                                  <div class="palette-swatch-color" style="width:1.5rem; height:1.5rem; background:rgb('.$rgbPalette[0].','.$rgbPalette[1].','.$rgbPalette[2].');"></div>
+                                  <div class="palette-swatch-ratio palette-swatch-hex" style="display:none;">'.$colorRatio.'%</br>#'.$hexColor.'</div>
+                                </div>
+                              ';
+                            }
+                          }
+                          ?>
+                        </div>
                       </div>
-                    ';
-                  }
-                }
-                ?>
+                    </a>
+                  </div>
+                <?php } ?>
                 </div>
               </div>
-              <?php } ?>
             </div><!-- .row -->
           </article>
         </main>

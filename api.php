@@ -16,18 +16,6 @@
   	response(400,"Invalid request");
   }
 
-  //Get list for the user
-  function get_list() {
-    $listsfile = file_get_contents("lists.json");
-    $lists = json_decode($listsfile, true);
-    if ($lists) {
-      return $lists;
-    } else {
-      return false;
-    }
-    
-  }
-
   //REST HTTP response function
   function response($status,$data) {
   	header("HTTP/1.1 ".$status);

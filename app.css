@@ -9,6 +9,7 @@
 
 .palette-swatch.mini {
   padding-top: 0.5rem;
+  padding-right: 0.25rem;
 }
 
 .palette-swatch-color {
@@ -92,4 +93,22 @@
 .multi-artwork-container:hover {
   background-color: #86dce0;
 }
+
+a.modebar-btn {
+  border: none !important;
+}
+
+a.no-decoration:hover {
+  text-decoration: none;
+}
+
+.artist-photo.mini {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 0.5rem;
+}
+
+
 

@@ -124,6 +124,16 @@
                   <input type="text" class="form-control" name="location" aria-describedby="locationHelp" placeholder="Enter artwork location" required>
                   <small id="locationHelp" class="form-text text-muted">Artwork Current Location.</small>
                 </div>
+                <div class="form-group">
+                  <label for="location">Artwork Description</label>
+                  <textarea class="form-control" name="description" aria-describedby="descriptionHelp" placeholder="Enter artwork description" rows="3"></textarea>
+                  <small id="descriptionHelp" class="form-text text-muted">Artwork Description.</small>
+                </div>
+                <div class="form-group">
+                  <label for="url">Artwork Description Source URL</label>
+                  <input type="url" class="form-control" name="descriptionSource" aria-describedby="descriptionSourceHelp" placeholder="Enter artwork description source URL">
+                  <small id="descriptionSourceHelp" class="form-text text-muted">Artwork Description Source URL.</small>
+                </div>
                 <button type="submit" name="action" class="btn btn-primary">Submit</button>
               </form>
               </div>

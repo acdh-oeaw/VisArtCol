@@ -31,7 +31,7 @@ function addArtworkData($formData) {
   }
 
   $data["latestId"] = $newId;
-  array_push($data["artworks"], array('id' => $newId, 'artist' => $formData["artist"], 'title' => $formData["title"], 'year' => $formData["year"], 'imgURL' => $formData["url"], 'medium' => $formData["medium"], 'dimensions' => $formData["dimensions"], 'currentLocation' => $formData["location"], 'rgbPalette' => $paletteColors));
+  array_push($data["artworks"], array('id' => $newId, 'artist' => $formData["artist"], 'title' => $formData["title"], 'year' => $formData["year"], 'imgURL' => $formData["url"], 'medium' => $formData["medium"], 'dimensions' => $formData["dimensions"], 'currentLocation' => $formData["location"], 'description' => $formData["description"], 'descriptionSource' => $formData["descriptionSource"], 'rgbPalette' => $paletteColors));
   $new_data = json_encode($data);
   if (file_put_contents("data/metadata.json", $new_data) === false){
     unset($new_data);
@@ -39,6 +39,19 @@ function addArtworkData($formData) {
   } else {
     unset($new_data);
     return "Artwork metadata added.";
+  }
+}
+
+function getArtistData($artistID) {
+  $file = file_get_contents("data/metadata.json");
+  $data = json_decode($file, true);
+  if ($artistID == "all") {
+    return $data["artists"];
+  }
+  foreach($data["artists"] as $artist) {
+    if ($artist["id"] == $artistID) {
+      return $artist;
+    }
   }
 }
 
@@ -64,11 +77,11 @@ function getArtwork3DPlot($artworkID) {
         x: unpack(rows, 'r'), y: unpack(rows, 'g'), z: unpack(rows, 'b'),
         mode: 'markers',
         marker: {
-          size: 2,
+          size: 3,
           color: dotcolor(rows),
           line: {
             color: 'rgb(90, 90, 90)',
-            width: 0.1
+            width: 0.05
           }
         },
         type: 'scatter3d'
