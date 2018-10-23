@@ -170,8 +170,9 @@
     {
       "id":1,
       "name":"Egon Schiele",
+      "lifetime":"1890-1918",
       "imgURL":"https://upload.wikimedia.org/wikipedia/commons/a/a8/Egon-schiele.jpg",
-      "description":"Egon Schiele (12 June 1890 – 31 October 1918) was an Austrian painter. A protégé of Gustav Klimt, Schiele was a major figurative painter of the early 20th century. His work is noted for its intensity and its raw sexuality, and the many self-portraits the artist produced, including naked self-portraits. The twisted body shapes and the expressive line that characterize Schiele's paintings and drawings mark the artist as an early exponent of Expressionism.",
+      "description":"Egon Schiele was an Austrian painter. A protégé of Gustav Klimt, Schiele was a major figurative painter of the early 20th century. His work is noted for its intensity and its raw sexuality, and the many self-portraits the artist produced, including naked self-portraits. The twisted body shapes and the expressive line that characterize Schiele's paintings and drawings mark the artist as an early exponent of Expressionism.",
       "descriptionSource":"https://en.wikipedia.org/wiki/Egon_Schiele"
     }
   ]

@@ -185,6 +185,96 @@ function getArtworkRGBHistogram($artworkID) {
 
 }
 
+function getArtist3DPlot($artistID) {
+
+  return "
+    <script>
+    Plotly.d3.json('data/metadata.json', function(err, metadata){
+
+      const artistID = ".$artistID.";
+      const artist = metadata.artists.find(artist => artist.id === artistID );
+      const artistWorks = metadata.artworks.filter(artwork => artwork.artist === artist.name );
+
+      var data = [];
+
+      function unpack(artworkPalette, key) {
+        return artworkPalette.map(function(artworkPalette) {
+          return artworkPalette[key]; 
+        });
+      }
+
+      function dotcolor(artworkPalette) {
+        return artworkPalette.map(function(artworkPalette) { 
+          return 'rgb('+artworkPalette[0]+','+artworkPalette[1]+','+artworkPalette[2]+')'; 
+        });
+      }
+
+      for (i = 0; i < artistWorks.length; ++i) {
+        var artworkPalette = artistWorks[i].rgbPalette;
+        var lineColor = (i+50) * i;
+        lineColor = 'rgb('+lineColor+','+lineColor+','+lineColor+')';
+        console.log(lineColor);
+        var trace = {
+          x: unpack(artworkPalette, 0),
+          y: unpack(artworkPalette, 1),
+          z: unpack(artworkPalette, 2),
+          name: artistWorks[i].title,
+          marker: {
+            color: dotcolor(artworkPalette),
+          },
+          line: {
+            color: 'rgb(150,150,150)',
+            width: 0.5,
+          },
+          mode: 'lines+markers',
+          type: 'scatter3d'
+        };
+        data.push(trace);
+      }
+
+      var layout = {
+        margin: { l:0, r:0, b: 0, t: 0 },
+        autosize: true,
+        height: 550,
+        showlegend: false,
+        hoverlabel: {
+          bgcolor: '#222',
+          font: {color: 'white'}
+        },
+        scene:{ 
+          camera: {
+            center: { x: 0, y: 0, z: -0.1 }, 
+            eye: { x: -1, y: 1.5, z: 0 }, 
+            up: { x: 0, y: 1, z: 0 }
+          },
+          xaxis: {
+            title: 'Red',
+            tickfont: {
+              color:'red',
+            },
+          },
+          yaxis: {
+            title: 'Green',
+            tickfont: {
+              color:'green',
+            },
+          },
+          zaxis: {
+            title: 'Blue',
+            tickfont: {
+              color:'blue',
+            },
+          }
+        },
+      };
+
+      Plotly.newPlot('artist-plot', data, layout, {responsive: true});
+
+    });
+    </script>
+  ";
+
+}
 
 
 function savePixelColors($img, $newId) {

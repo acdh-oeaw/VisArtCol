@@ -84,6 +84,11 @@
   background-color: #f3f3f3;
 }
 
+#artist-plot {
+  height: 550px;
+  background-color: #f3f3f3;
+}
+
 .multi-artwork-container {
   padding: 1rem;
   background-color: #e8e8e8;
@@ -102,11 +107,17 @@ a.no-decoration:hover {
   text-decoration: none;
 }
 
+.artist-photo {
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+}
+
 .artist-photo.mini {
   width: 2rem;
   height: 2rem;
-  border-radius: 50%;
-  overflow: hidden;
   margin-right: 0.5rem;
 }
 
