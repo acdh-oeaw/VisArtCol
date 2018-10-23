@@ -76,10 +76,12 @@ function getArtwork3DPlot($artworkID) {
 
       var layout = {
         margin: { l:0, r:0, b: 0, t: 0 },
+        autosize: true,
+        height: 450,
         scene:{ 
           camera: {
-            center: { x: 0, y: 0, z: 0 }, 
-            eye: { x: -1, y: 1.75, z: 0 }, 
+            center: { x: 0, y: 0, z: -0.1 }, 
+            eye: { x: -1, y: 1.5, z: 0 }, 
             up: { x: 0, y: 1, z: 0 }
           },
           xaxis: {
@@ -103,7 +105,7 @@ function getArtwork3DPlot($artworkID) {
         },
       };
 
-      Plotly.newPlot('#artwork-plot', [data], layout);
+      Plotly.newPlot('artwork-plot', [data], layout, {responsive: true});
 
     });
     </script>

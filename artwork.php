@@ -101,9 +101,11 @@
                 </div>
               </div>
               <div class="col-md-8 col-lg-8 artwork-plot-container">
-                <h6 class="component-heading">Descriptive Color Statistics</h6>
-                <div id="#artwork-plot"></div>
+                <h6 class="component-heading">Color Distribution</h6>
+                <div id="artwork-plot"></div>
+                <p><i data-feather="info" style="color:#86dce0"></i> The above graph displays the distribution of pixels from the artwork in relation to their color components on a RGB color space.</p>
                 <?php echo getArtwork3DPlot($artworkID); ?>
+                <h6 class="component-heading">Color Clusters</h6>
                 <div class="artwork-palette">
                 <?php
                 foreach ($artwork["rgbPalette"] as $i => $rgbPalette) {
@@ -113,18 +115,18 @@
                     $hexColor = sprintf("%02x%02x%02x", $rgbPalette[0], $rgbPalette[1], $rgbPalette[2]);
                     echo '
                       <div class="palette-swatch">
-                        <div class="palette-swatch-color" style="background:rgb('.$rgbPalette[0].','.$rgbPalette[1].','.$rgbPalette[2].');"></div>
-                        <div class="palette-swatch-ratio">'.$colorRatio.'%</div>
-                        <div class="palette-swatch-hex">#'.$hexColor.'</div>
+                        <div class="palette-swatch-color-wrap">
+                          <div class="palette-swatch-color" style="background:rgb('.$rgbPalette[0].','.$rgbPalette[1].','.$rgbPalette[2].');"></div>
+                          <div class="palette-swatch-ratio palette-swatch-hex">'.$colorRatio.'%</br>#'.$hexColor.'</div>
+                        </div>
+                        <img style="border: 3px solid #'.$hexColor.'" src="data/'.$artworkID.'-'.$hexColor.'.png" alt="'.$artwork["title"].'" />
                       </div>
-                    ';
-                    echo '
-                     <img src="data/'.$artworkID.'-'.$hexColor.'.png" alt="'.$artwork["title"].'" />
                     ';
                   }
                 }
                 ?>
                 </div>
+                <p class="mt-4"><i data-feather="info" style="color:#86dce0"></i>The average colors of the artwork and their ratio is calculated using the color distribution on the three dimensional RGB color space. An uniform grid histogram algorithm is used for clustering and the pixels of major color clusters are displayed underneath.</p>
               </div>
             </div><!-- .row -->
           </article>
