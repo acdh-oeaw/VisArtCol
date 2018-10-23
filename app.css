@@ -7,6 +7,10 @@
   font-size: 0.7rem;
 }
 
+.palette-swatch.mini {
+  padding-top: 0.5rem;
+}
+
 .palette-swatch-color {
   width: 2rem;
   height: 2rem;
@@ -64,7 +68,28 @@
 
 .component-heading {
   margin-bottom: 1rem;
-  text-align: center;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #ccc;
+  font-weight: 700;
 }
+
+#artwork-plot {
+  height: 450px;
+  background-color: #f3f3f3;
+}
+
+#rgbhistogram-plot {
+  height: 300px;
+  background-color: #f3f3f3;
+}
+
+.multi-artwork-container {
+  padding: 1rem;
+  background-color: #e8e8e8;
+  transition: background-color 0.1s linear;
+}
+
+.multi-artwork-container:hover {
+  background-color: #86dce0;
+}
+

@@ -113,6 +113,67 @@ function getArtwork3DPlot($artworkID) {
 
 }
 
+function getArtworkRGBHistogram($artworkID) {
+
+  return "
+    <script>
+    Plotly.d3.csv('data/".$artworkID.".csv', function(err, rows){
+
+      function unpack(rows, key) {
+        return rows.map(function(row) {
+          return row[key]; 
+        });
+      }
+
+      var traceR = {
+        x: unpack(rows, 'r'),
+        type: 'histogram',
+        opacity: 0.5,
+        name: 'Red',
+        marker: {
+          color: 'red'
+        },
+      };
+
+      var traceG = {
+        x: unpack(rows, 'g'),
+        type: 'histogram',
+        opacity: 0.5,
+        name: 'Green', 
+        marker: {
+          color: 'green'
+        },
+      };
+
+      var traceB = {
+        x: unpack(rows, 'b'),
+        type: 'histogram',
+        opacity: 0.5,
+        name: 'Blue',
+        marker: {
+          color: 'blue'
+        },
+      };
+
+      var layout = {
+        margin: { l:50, r:0, b: 40, t: 20 },
+        autosize: true,
+        height: 300,
+        barmode: 'overlay',
+        xaxis: {title: 'Value'}, 
+        yaxis: {title: 'Count'}
+      };
+
+      Plotly.newPlot('rgbhistogram-plot', [traceR, traceG, traceB], layout, {responsive: true});
+
+    });
+    </script>
+  ";
+
+}
+
+
+
 function savePixelColors($img, $newId) {
 
   $MAX_WIDTH    = 150;
