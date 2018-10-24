@@ -81,7 +81,7 @@
               <div class="col-md-4 col-lg-2">
                 <h6 class="component-heading">Explore Artists</h6>
                 <?php foreach ($artists as $artist) { ?>
-                  <a class="d-flex no-decoration align-items-center" href="<?php echo "artist.php?artistID=".$artist["id"]; ?>">
+                  <a class="d-flex no-decoration align-items-center mb-3" href="<?php echo "artist.php?artistID=".$artist["id"]; ?>">
                     <div class="artist-photo mini">
                       <img src="<?php echo $artist["imgURL"]; ?>" alt="<?php echo $artist["name"]; ?>" />
                     </div>

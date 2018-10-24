@@ -115,7 +115,7 @@
               <div class="col-md-8 col-lg-8 artwork-plot-container">
                 <h6 class="component-heading">Color Distribution</h6>
                 <div id="artist-plot"></div>
-                <p class="mt-4"><i data-feather="info" style="color:#86dce0"></i> The above graph displays the distribution of main colors which this artist have used in different artworks over time. Averaged main colors are shown in relation to their color components on three dimensional a RGB color space.</p>
+                <p class="mt-4"><i data-feather="info" style="color:#86dce0"></i> The above graph displays the distribution of main colors which this artist have used in different artworks over time. Averaged main colors are shown in relation to their color components on three dimensional a RGB color space. Sizes of the nodes represent the occurrence ratio of a color calculated in a logarithmic scale.</p>
                 <?php echo getArtist3DPlot($artistID); ?>
               </div>
               <div class="col-md-12 col-lg-12">

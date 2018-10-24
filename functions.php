@@ -203,23 +203,34 @@ function getArtist3DPlot($artistID) {
         });
       }
 
+      function unpackLog(artworkPalette, key) {
+        return artworkPalette.map(function(artworkPalette) {
+          return getBaseLog(2, artworkPalette[key]*1000) * 2; 
+        });
+      }
+
       function dotcolor(artworkPalette) {
         return artworkPalette.map(function(artworkPalette) { 
           return 'rgb('+artworkPalette[0]+','+artworkPalette[1]+','+artworkPalette[2]+')'; 
         });
       }
 
+      function getBaseLog(x, y) {
+        return Math.log(y) / Math.log(x);
+      }
+
       for (i = 0; i < artistWorks.length; ++i) {
         var artworkPalette = artistWorks[i].rgbPalette;
-        var lineColor = (i+50) * i;
-        lineColor = 'rgb('+lineColor+','+lineColor+','+lineColor+')';
-        console.log(lineColor);
+        //var lineColor = (i+50) * i;
+        //lineColor = 'rgb('+lineColor+','+lineColor+','+lineColor+')';
         var trace = {
           x: unpack(artworkPalette, 0),
           y: unpack(artworkPalette, 1),
           z: unpack(artworkPalette, 2),
           name: artistWorks[i].title,
           marker: {
+            size: unpackLog(artworkPalette, 3),
+            opacity: 1,
             color: dotcolor(artworkPalette),
           },
           line: {

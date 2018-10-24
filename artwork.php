@@ -126,8 +126,8 @@
                 <div class="artwork-palette">
                 <?php
                 foreach ($artwork["rgbPalette"] as $i => $rgbPalette) {
-                  // Show max 5 colors
-                  if ($i < 5) {
+                  // Show max 7 colors
+                  if ($i < 7) {
                     $colorRatio = $rgbPalette[3] * 100;
                     $hexColor = sprintf("%02x%02x%02x", $rgbPalette[0], $rgbPalette[1], $rgbPalette[2]);
                     echo '
