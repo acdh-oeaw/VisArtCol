@@ -28,23 +28,16 @@
         <nav class="navbar navbar-expand-lg navbar-light">
           <div class="container" >
             <!-- Your site title as branding in the menu -->
-            <a href="/" class="navbar-brand custom-logo-link" rel="home" itemprop="url"><img src="images/visartist-logo.svg" class="img-fluid" alt="visartist Logo" itemprop="logo" /></a><!-- end custom logo -->
+            <a href="index.html" class="navbar-brand custom-logo-link" rel="home" itemprop="url"><img src="images/visartist-logo.svg" class="img-fluid" alt="visartist Logo" itemprop="logo" /></a><!-- end custom logo -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
               <!-- Your menu goes here -->
               <ul id="main-menu" class="navbar-nav">
-                <li class="nav-item active"><a title="Home" href="/" class="nav-link">Home</a></li>
-                <li class="nav-item dropdown">
-                  <a title="Dropdown" href="#" data-toggle="dropdown" class="nav-link dropdown-toggle">Dropdown <span class="caret"></span></a>
-                  <ul class=" dropdown-menu" role="menu">
-                    <li class="nav-item dropdown-submenu">
-                      <a title="Level 1" href="#" class="nav-link">Level 1</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item"><a title="Documentation" href="#" class="nav-link">Documentation</a></li>
+                <li class="nav-item active"><a title="Home" href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a title="Explore Artworks" href="overview.php" class="nav-link">Explore Artworks</a></li>
+                <li class="nav-item"><a title="Add New Artwork" href="add-artwork.php" class="nav-link">Add New Artwork</a></li>
               </ul>
               <form class="form-inline my-2 my-lg-0 navbar-search-form" method="get" action="/" role="search">
                 <input class="form-control navbar-search" id="s" name="s" type="text" placeholder="Search" value="" autocomplete="off">

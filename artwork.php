@@ -39,20 +39,9 @@
             <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
               <!-- Your menu goes here -->
               <ul id="main-menu" class="navbar-nav">
-                <li class="nav-item active"><a title="Home" href="/" class="nav-link">Home</a></li>
-                <li class="nav-item"><a title="Explore Artworks" href="#" class="nav-link">Explore Artworks</a></li>
-                <li class="nav-item dropdown">
-                  <a title="Dropdown" href="#" data-toggle="dropdown" class="nav-link dropdown-toggle">Artists <span class="caret"></span></a>
-                  <ul class=" dropdown-menu" role="menu">
-                    <li class="nav-item dropdown-submenu">
-                      <a title="E. Schiele" href="#" class="nav-link">E. Schiele</a>
-                    </li>
-                    <li class="nav-item dropdown-submenu">
-                      <a title="C. Monet" href="#" class="nav-link">C. Monet</a>
-                    </li>
-                  </ul>
-                </li>
-                <li class="nav-item"><a title="Add New Artwork" href="#" class="nav-link">Add New Artwork</a></li>
+                <li class="nav-item active"><a title="Home" href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a title="Explore Artworks" href="overview.php" class="nav-link">Explore Artworks</a></li>
+                <li class="nav-item"><a title="Add New Artwork" href="add-artwork.php" class="nav-link">Add New Artwork</a></li>
               </ul>
               <form class="form-inline my-2 my-lg-0 navbar-search-form" method="get" action="/" role="search">
                 <input class="form-control navbar-search" id="s" name="s" type="text" placeholder="Search" value="" autocomplete="off">
