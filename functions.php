@@ -45,8 +45,9 @@ function addArtworkData($formData) {
 function getArtistData($artistID) {
   $file = file_get_contents("data/metadata.json");
   $data = json_decode($file, true);
+  if (!isset($data["artists"])) return 0;
   if ($artistID == "all") {
-    return $data["artists"];
+    if ($data["artists"]) return $data["artists"];
   }
   foreach($data["artists"] as $artist) {
     if ($artist["id"] == $artistID) {

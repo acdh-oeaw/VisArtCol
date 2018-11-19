@@ -54,13 +54,6 @@
       </div>
       <!-- .wrapper-navbar end -->
 
-
-
-
-
-
-
-
 <div class="wrapper" id="page-wrapper">
   <div class="container" id="content" tabindex="-1">
     <div class="row">
@@ -73,6 +66,7 @@
             <div class="row">
               <div class="col-md-4 col-lg-2">
                 <h6 class="component-heading">Explore Artists</h6>
+                <?php if ($artists !== 0) { ?>
                 <?php foreach ($artists as $artist) { ?>
                   <a class="d-flex no-decoration align-items-center mb-3" href="<?php echo "artist.php?artistID=".$artist["id"]; ?>">
                     <div class="artist-photo mini">
@@ -80,7 +74,7 @@
                     </div>
                     <div class="artist-name"><?php echo $artist["name"]; ?></div>
                   </a>
-                <?php } ?>
+                <?php } } ?>
               </div>
               <div class="col-md-8 col-lg-10">
                 <h6 class="component-heading">Explore Artworks</h6>
