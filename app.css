@@ -125,3 +125,14 @@ a.no-decoration:hover {
   margin-top: -10px;
 }
 
+a.dropdown-item {
+  border: none !important;
+}
+
+.dropdown-menu {
+  z-index: 9999;
+}
+
+a.dropdown-item:hover {
+  filter: none !important;
+}

@@ -110,13 +110,13 @@
                 <h6 class="component-heading">
                   Color Distribution
                   <div class="btn-group component-heading-dropdown float-right">
-                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" id="dropdown-color-spaces-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Color Space: HSL
                     </button>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">HSL</a>
-                      <a class="dropdown-item" href="#">RGB</a>
-                      <a class="dropdown-item" href="#">LAB</a>
+                    <div class="dropdown-menu" id="dropdown-color-spaces">
+                      <a class="dropdown-item dropdown-hsl" href="#">HSL</a>
+                      <a class="dropdown-item dropdown-rgb" href="#">RGB</a>
+                      <a class="dropdown-item dropdown-lab" href="#">LAB</a>
                     </div>
                   </div>
                 </h6>
@@ -286,5 +286,7 @@
     <!-- #page we need this extra closing tag here -->
     <script type="text/javascript" src="fundament/vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="fundament/js/fundament.min.js"></script>
+    <!-- app.js -->
+    <script src="app.js"></script>
   </body>
 </html>
