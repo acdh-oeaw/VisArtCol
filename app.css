@@ -121,5 +121,7 @@ a.no-decoration:hover {
   margin-right: 0.5rem;
 }
 
-
+.component-heading-dropdown {
+  margin-top: -10px;
+}
 

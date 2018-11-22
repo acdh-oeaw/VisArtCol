@@ -216,6 +216,101 @@ function getArtwork3DPlotHSL($artworkID) {
   ";
 }
 
+function getArtwork3DPlotLAB($artworkID) {
+  return "
+    <script>
+    Plotly.d3.csv('data/".$artworkID.".csv', function(err, rows){
+
+      function unpack(rows, key) {
+        return rows.map(function(row) {
+          var lab = RGB2LAB(row['r'],row['g'],row['b']);
+          return lab[key];
+        });
+      }
+
+      function RGB2LAB(r,g,b) {
+        var l;
+        var a;
+        var b;
+        var r = r / 255;
+        var g = g / 255;
+        var b = b / 255;
+        r = r > 0.04045 ? Math.pow(((r + 0.055) / 1.055), 2.4) : (r / 12.92);
+        g = g > 0.04045 ? Math.pow(((g + 0.055) / 1.055), 2.4) : (g / 12.92);
+        b = b > 0.04045 ? Math.pow(((b + 0.055) / 1.055), 2.4) : (b / 12.92);
+        var x = (r * 0.4124) + (g * 0.3576) + (b * 0.1805);
+        var y = (r * 0.2126) + (g * 0.7152) + (b * 0.0722);
+        var z = (r * 0.0193) + (g * 0.1192) + (b * 0.9505);
+        x /= 95.047;
+        y /= 100;
+        z /= 108.883;
+        x = x > 0.008856 ? Math.pow(x, 1 / 3) : (7.787 * x) + (16 / 116);
+        y = y > 0.008856 ? Math.pow(y, 1 / 3) : (7.787 * y) + (16 / 116);
+        z = z > 0.008856 ? Math.pow(z, 1 / 3) : (7.787 * z) + (16 / 116);
+        l = (116 * y) - 16;
+        a = 500 * (x - y);
+        b = 200 * (y - z);
+        return [l, a, b];
+      };
+
+      function dotcolor(rows) {
+        return rows.map(function(row) { 
+          return 'rgb('+row['r']+','+row['g']+','+row['b']+')'; 
+        });
+      }
+
+      var data = {
+        x: unpack(rows, 0), y: unpack(rows, 1), z: unpack(rows, 2),
+        mode: 'markers',
+        marker: {
+          size: 3,
+          color: dotcolor(rows),
+          line: {
+            color: 'rgb(90, 90, 90)',
+            width: 0.05
+          }
+        },
+        type: 'scatter3d'
+      };
+
+      var layout = {
+        margin: { l:0, r:0, b: 0, t: 0 },
+        autosize: true,
+        height: 450,
+        scene:{ 
+          camera: {
+            center: { x: 0, y: 0, z: -0.1 }, 
+            eye: { x: -1, y: 1.5, z: 0 }, 
+            up: { x: 0, y: 1, z: 0 }
+          },
+          xaxis: {
+            title: 'L* (Lightness)',
+            tickfont: {
+              color:'#222222',
+            },
+          },
+          yaxis: {
+            title: 'a* (green-red)',
+            tickfont: {
+              color:'#222222',
+            },
+          },
+          zaxis: {
+            title: 'b* (blue-yellow)',
+            tickfont: {
+              color:'#222222',
+            },
+          }
+        },
+      };
+
+      Plotly.newPlot('artwork-plot-lab', [data], layout, {responsive: true});
+
+    });
+    </script>
+  ";
+}
+
 function getArtworkRGBHistogram($artworkID) {
 
   return "

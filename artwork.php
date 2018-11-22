@@ -107,13 +107,26 @@
                 </div>
               </div>
               <div class="col-md-8 col-lg-8 artwork-plot-container">
-                <h6 class="component-heading">Color Distribution</h6>
-                <div id="artwork-plot-rgb" class="artwork-plot"></div>
+                <h6 class="component-heading">
+                  Color Distribution
+                  <div class="btn-group component-heading-dropdown float-right">
+                    <button class="btn btn-primary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Color Space: HSL
+                    </button>
+                    <div class="dropdown-menu">
+                      <a class="dropdown-item" href="#">HSL</a>
+                      <a class="dropdown-item" href="#">RGB</a>
+                      <a class="dropdown-item" href="#">LAB</a>
+                    </div>
+                  </div>
+                </h6>
                 <div id="artwork-plot-hsl" class="artwork-plot"></div>
-                <div id="artwork-plot-lab" class="artwork-plot"></div>
+                <div id="artwork-plot-rgb" class="artwork-plot" style="display:none;"></div>
+                <div id="artwork-plot-lab" class="artwork-plot" style="display:none;"></div>
                 <p><i data-feather="info" style="color:#86dce0"></i> The above graph displays the distribution of pixels from the artwork in relation to their color components the selected color space.</p>
-                <?php echo getArtwork3DPlotRGB($artworkID); ?>
                 <?php echo getArtwork3DPlotHSL($artworkID); ?>
+                <?php echo getArtwork3DPlotRGB($artworkID); ?>
+                <?php echo getArtwork3DPlotLAB($artworkID); ?>
                 <h6 class="component-heading mt-5">Color Clusters</h6>
                 <div class="artwork-palette">
                 <?php
