@@ -56,8 +56,7 @@ function getArtistData($artistID) {
   }
 }
 
-function getArtwork3DPlot($artworkID) {
-
+function getArtwork3DPlotRGB($artworkID) {
   return "
     <script>
     Plotly.d3.csv('data/".$artworkID.".csv', function(err, rows){
@@ -119,12 +118,102 @@ function getArtwork3DPlot($artworkID) {
         },
       };
 
-      Plotly.newPlot('artwork-plot', [data], layout, {responsive: true});
+      Plotly.newPlot('artwork-plot-rgb', [data], layout, {responsive: true});
 
     });
     </script>
   ";
+}
 
+function getArtwork3DPlotHSL($artworkID) {
+  return "
+    <script>
+    Plotly.d3.csv('data/".$artworkID.".csv', function(err, rows){
+
+      function unpack(rows, key) {
+        return rows.map(function(row) {
+          var hsl = RGB2HSL(row['r'],row['g'],row['b']);
+          return hsl[key];
+        });
+      }
+
+      function RGB2HSL(r,g,b) {
+        var r = r / 255;
+        var g = g / 255;
+        var b = b / 255;
+        var min = Math.min(r,g,b);
+        var max = Math.max(r,g,b);
+        var diff = max - min;
+        var h,s,l;
+        if (max === min) { h = 0; }
+        else if (r === max) { h = (g - b) / diff; }
+        else if (g === max) { h = 2 + (b - r) / diff; }
+        else if (b === max) { h = 4 + (r - g) / diff; }
+        h = Math.min(h * 60, 360);
+        if (h < 0) { h += 360; }
+        l = (min + max) / 2;
+        if (max === min) { s = 0; }
+        else if (l <= 0.5) { s = diff / (max + min); }
+        else { s = diff / (2 - max - min); }
+        return [h, s * 100, l * 100];
+      };
+
+      function dotcolor(rows) {
+        return rows.map(function(row) { 
+          return 'rgb('+row['r']+','+row['g']+','+row['b']+')'; 
+        });
+      }
+
+      var data = {
+        x: unpack(rows, 0), y: unpack(rows, 1), z: unpack(rows, 2),
+        mode: 'markers',
+        marker: {
+          size: 3,
+          color: dotcolor(rows),
+          line: {
+            color: 'rgb(90, 90, 90)',
+            width: 0.05
+          }
+        },
+        type: 'scatter3d'
+      };
+
+      var layout = {
+        margin: { l:0, r:0, b: 0, t: 0 },
+        autosize: true,
+        height: 450,
+        scene:{ 
+          camera: {
+            center: { x: 0, y: 0, z: -0.1 }, 
+            eye: { x: -1, y: 1.5, z: 0 }, 
+            up: { x: 0, y: 1, z: 0 }
+          },
+          xaxis: {
+            title: 'Hue',
+            tickfont: {
+              color:'#222222',
+            },
+          },
+          yaxis: {
+            title: 'Saturation',
+            tickfont: {
+              color:'#222222',
+            },
+          },
+          zaxis: {
+            title: 'Lightness',
+            tickfont: {
+              color:'#222222',
+            },
+          }
+        },
+      };
+
+      Plotly.newPlot('artwork-plot-hsl', [data], layout, {responsive: true});
+
+    });
+    </script>
+  ";
 }
 
 function getArtworkRGBHistogram($artworkID) {

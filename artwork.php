@@ -108,9 +108,12 @@
               </div>
               <div class="col-md-8 col-lg-8 artwork-plot-container">
                 <h6 class="component-heading">Color Distribution</h6>
-                <div id="artwork-plot"></div>
-                <p><i data-feather="info" style="color:#86dce0"></i> The above graph displays the distribution of pixels from the artwork in relation to their color components on three dimensional a RGB color space.</p>
-                <?php echo getArtwork3DPlot($artworkID); ?>
+                <div id="artwork-plot-rgb" class="artwork-plot"></div>
+                <div id="artwork-plot-hsl" class="artwork-plot"></div>
+                <div id="artwork-plot-lab" class="artwork-plot"></div>
+                <p><i data-feather="info" style="color:#86dce0"></i> The above graph displays the distribution of pixels from the artwork in relation to their color components the selected color space.</p>
+                <?php echo getArtwork3DPlotRGB($artworkID); ?>
+                <?php echo getArtwork3DPlotHSL($artworkID); ?>
                 <h6 class="component-heading mt-5">Color Clusters</h6>
                 <div class="artwork-palette">
                 <?php
