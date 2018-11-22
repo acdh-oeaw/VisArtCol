@@ -7,4 +7,4 @@ Please note that this project is currently at a very early experimental stage; t
 
 All artworks and information about artworks / artists belong to the respective owners and the sources are linked with the information provided. Currently all visual data is remotely used from Wikimedia Commons.
 
-Concept and Development: Asil Çetin
+Concept and Development: Asil ÇETIN, Go SUGIMOTO
