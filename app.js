@@ -1,3 +1,6 @@
+// Fundament theme JS
+feather.replace(),anchors.add(".anchored"),jQuery(function(r){"use strict";r(window).on("load",function(){r(".card-wrapper").isotope({itemSelector:".card",masonry:{columnWidth:".card"}})})});
+
 // Toggle color spaces artwork view
 $("#dropdown-color-spaces > .dropdown-item").click(function() {
   if ( $(this).hasClass("dropdown-rgb") ) {

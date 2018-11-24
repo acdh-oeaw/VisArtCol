@@ -31,9 +31,9 @@
               </div>
               <div class="col-md-8 col-lg-10">
                 <h6 class="component-heading">Explore Artworks</h6>
-                <div class="row">
+                <div class="card-wrapper">
                 <?php foreach ($artworks as $artwork) { ?>
-                  <div class="col-md-4 col-lg-4">
+                  <div class="col-md-4 col-lg-4 card" style="padding:1rem;">
                     <a class="no-decoration" href="<?php echo "artwork.php?artworkID=".$artwork["id"]; ?>">
                       <div class="multi-artwork-container">
                         <div class="frame">

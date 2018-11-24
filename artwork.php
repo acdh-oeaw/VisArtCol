@@ -57,22 +57,22 @@
                   Color Distribution
                   <div class="btn-group component-heading-dropdown float-right">
                     <button class="btn btn-primary btn-sm dropdown-toggle" id="dropdown-color-spaces-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Color Space: HSL
+                      Color Space: LAB
                     </button>
                     <div class="dropdown-menu" id="dropdown-color-spaces">
+                      <a class="dropdown-item dropdown-lab" href="#">LAB</a>
                       <a class="dropdown-item dropdown-hsl" href="#">HSL</a>
                       <a class="dropdown-item dropdown-rgb" href="#">RGB</a>
-                      <a class="dropdown-item dropdown-lab" href="#">LAB</a>
                     </div>
                   </div>
                 </h6>
-                <div id="artwork-plot-hsl" class="artwork-plot"></div>
+                <div id="artwork-plot-lab" class="artwork-plot"></div>
                 <div id="artwork-plot-rgb" class="artwork-plot" style="display:none;"></div>
-                <div id="artwork-plot-lab" class="artwork-plot" style="display:none;"></div>
+                <div id="artwork-plot-hsl" class="artwork-plot" style="display:none;"></div>
                 <p><i data-feather="info" style="color:#86dce0"></i> The above graph displays the distribution of pixels from the artwork in relation to their color components the selected color space.</p>
+                <?php echo getArtwork3DPlotLAB($artworkID); ?>
                 <?php echo getArtwork3DPlotHSL($artworkID); ?>
                 <?php echo getArtwork3DPlotRGB($artworkID); ?>
-                <?php echo getArtwork3DPlotLAB($artworkID); ?>
                 <h6 class="component-heading mt-5">Color Clusters</h6>
                 <div class="artwork-palette">
                 <?php
@@ -103,13 +103,15 @@
               <div class="col-md-12 col-lg-12">
                 <h6 class="component-heading mb-4 mt-4">Other Artworks by <?php echo $artwork["artist"]; ?></h6>
               </div>
+              <div class="col-md-12 col-lg-12">
+                <div class="card-wrapper">
                 <?php
                 $artworks = getArtworkData("all");
                 $artworkArtist = $artwork["artist"];
                 $artworkId = $artwork["id"];
                 foreach ($artworks as $artwork) { 
                   if ($artwork["artist"] == $artworkArtist && $artwork["id"] != $artworkId) { ?>
-                    <div class="col-md-4 col-lg-4">
+                    <div class="col-md-4 col-lg-4 card" style="padding:1rem;">
                       <a href="<?php echo "artwork.php?artworkID=".$artwork["id"]; ?>">
                         <div class="multi-artwork-container">
                           <div class="frame">
@@ -143,6 +145,8 @@
                     </div>
                   <?php } ?>
                 <?php } ?>
+                </div>
+              </div>
             </div><!-- .row -->
           </article>
         </main>

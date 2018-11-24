@@ -56,12 +56,14 @@
               <div class="col-md-12 col-lg-12">
                 <h6 class="component-heading mb-4 mt-4">Artworks by <?php echo $artist["name"]; ?></h6>
               </div>
+              <div class="col-md-12 col-lg-12">
+                <div class="card-wrapper">
                 <?php
                 $artworks = getArtworkData("all");
                 $artworkArtist = $artist["name"];
                 foreach ($artworks as $artwork) { 
                   if ($artwork["artist"] == $artworkArtist) { ?>
-                    <div class="col-md-4 col-lg-4">
+                    <div class="col-md-4 col-lg-4 card" style="padding:1rem;">
                       <a href="<?php echo "artwork.php?artworkID=".$artwork["id"]; ?>">
                         <div class="multi-artwork-container">
                           <div class="frame">
@@ -95,6 +97,8 @@
                     </div>
                   <?php } ?>
                 <?php } ?>
+                </div>
+              </div>
             </div><!-- .row -->
           </article>
         </main>

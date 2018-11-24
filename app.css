@@ -136,3 +136,7 @@ a.dropdown-item {
 a.dropdown-item:hover {
   filter: none !important;
 }
+
+.card > a {
+  border: none !important;
+}
