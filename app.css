@@ -146,5 +146,10 @@ a.dropdown-item:hover {
 }
 
 #overview-search svg.feather {
-  color: #1c77a9;
+  color: #61a5a9;
+}
+
+#dropdown-color-spaces .dropdown-item:active, #dropdown-graph-type .dropdown-item:active {
+  background-color: #00a2b8;
+  color: #fff;
 }

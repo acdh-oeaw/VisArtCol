@@ -56,13 +56,21 @@
                 <h6 class="component-heading">
                   Color Distribution
                   <div class="btn-group component-heading-dropdown float-right">
-                    <button class="btn btn-primary btn-sm dropdown-toggle" id="dropdown-color-spaces-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button class="btn btn-info btn-sm dropdown-toggle" id="dropdown-color-spaces-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Color Space: LAB
                     </button>
                     <div class="dropdown-menu" id="dropdown-color-spaces">
                       <a class="dropdown-item dropdown-lab" href="#">LAB</a>
                       <a class="dropdown-item dropdown-hsl" href="#">HSL</a>
                       <a class="dropdown-item dropdown-rgb" href="#">RGB</a>
+                    </div>
+                  </div>
+                  <div class="btn-group component-heading-dropdown float-right mr-2">
+                    <button class="btn btn-info btn-sm dropdown-toggle" id="dropdown-graph-type-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Graph: 3D Scatterplot
+                    </button>
+                    <div class="dropdown-menu" id="dropdown-graph-type">
+                      <a class="dropdown-item dropdown-three-d-scatterplot" href="#">3D Scatterplot</a>
                     </div>
                   </div>
                 </h6>

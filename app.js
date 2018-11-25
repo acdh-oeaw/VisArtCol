@@ -3,6 +3,7 @@ feather.replace(),anchors.add(".anchored"),jQuery(function(r){"use strict";r(win
 
 // Toggle color spaces artwork view
 $("#dropdown-color-spaces > .dropdown-item").click(function() {
+  console.log("hey");
   if ( $(this).hasClass("dropdown-rgb") ) {
     $(".artwork-plot").hide();
     $("#artwork-plot-rgb").show();

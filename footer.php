@@ -53,5 +53,7 @@
     <!-- #page we need this extra closing tag here -->
     <script type="text/javascript" src="fundament/vendor/jquery/jquery.min.js"></script>
     <script type="text/javascript" src="fundament/js/fundament.min.js"></script>
+    <!-- app.js -->
+    <script type="text/javascript" src="app.js"></script>
   </body>
 </html>
