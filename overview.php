@@ -18,7 +18,30 @@
             </header>
             <div class="row">
               <div class="col-md-4 col-lg-2">
-                <h6 class="component-heading">Explore Artists</h6>
+                <h6 class="component-heading">Search Filters</h6>
+                <form id="overview-search">
+                  <div class="form-group">
+                    <label for="artworkNameFilter"><i data-feather="info"></i> Artwork Title</label>
+                    <input type="text" class="form-control form-control-sm" id="artworkNameFilter" placeholder="Le port de Trouville">
+                  </div>
+                  <div class="form-group">
+                    <label for="artworkMediumFilter"><i data-feather="image"></i> Artwork Medium</label>
+                    <input type="text" class="form-control form-control-sm" id="artworkMediumFilter" placeholder="oil on canvas">
+                  </div>
+                  <div class="form-group">
+                    <label for="artworkLocationFilter"><i data-feather="map-pin"></i> Artwork Location</label>
+                    <input type="text" class="form-control form-control-sm" id="artworkLocationFilter" placeholder="Leopold Museum">
+                  </div>
+                  <div class="form-group">
+                    <label for="artworkDateFilter"><i data-feather="calendar"></i> Artwork Date</label>
+                    <input type="text" class="form-control form-control-sm" id="artworkDateFilter" placeholder="1910-1912">
+                  </div>
+                  <div class="form-group">
+                    <label for="artworkColorsFilter"><i data-feather="droplet"></i> Artwork Colors</label>
+                    <input type="text" class="form-control form-control-sm" id="artworkColorsFilter" placeholder="#d4bda1, #473634">
+                  </div>
+                </form>
+                <h6 class="component-heading mt-4">Explore Artists</h6>
                 <?php if ($artists !== 0) { ?>
                 <?php foreach ($artists as $artist) { ?>
                   <a class="d-flex no-decoration align-items-center mb-3" href="<?php echo "artist.php?artistID=".$artist["id"]; ?>">

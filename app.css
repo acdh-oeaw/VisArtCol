@@ -140,3 +140,11 @@ a.dropdown-item:hover {
 .card > a {
   border: none !important;
 }
+
+#overview-search label {
+  margin-bottom: 0.25rem;
+}
+
+#overview-search svg.feather {
+  color: #1c77a9;
+}
