@@ -18,8 +18,9 @@
             </header>
             <div class="row">
               <div class="col-md-4 col-lg-2">
+<!--
                 <h6 class="component-heading">Search Filters</h6>
-                <form id="overview-search">
+                <form id="overview-search" class="mb-4">
                   <div class="form-group">
                     <label for="artworkNameFilter"><i data-feather="info"></i> Artwork Title</label>
                     <input type="text" class="form-control form-control-sm" id="artworkNameFilter" placeholder="Le port de Trouville">
@@ -41,7 +42,8 @@
                     <input type="text" class="form-control form-control-sm" id="artworkColorsFilter" placeholder="#d4bda1, #473634">
                   </div>
                 </form>
-                <h6 class="component-heading mt-4">Explore Artists</h6>
+-->
+                <h6 class="component-heading">Explore Artists</h6>
                 <?php if ($artists !== 0) { ?>
                 <?php foreach ($artists as $artist) { ?>
                   <a class="d-flex no-decoration align-items-center mb-3" href="<?php echo "artist.php?artistID=".$artist["id"]; ?>">
