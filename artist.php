@@ -1,5 +1,6 @@
 <?php
-  include("config.php");
+  if (file_exists("config.php")) { include "config.php"; }
+  else { include "config-sample.php"; }
   include("functions.php");
   if (isset($_GET["artistID"])) {
       $artistID = $_GET["artistID"];
