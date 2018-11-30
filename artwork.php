@@ -65,6 +65,7 @@
                       <a class="dropdown-item dropdown-rgb" href="#">RGB</a>
                     </div>
                   </div>
+<!--
                   <div class="btn-group component-heading-dropdown float-right mr-2">
                     <button class="btn btn-info btn-sm dropdown-toggle" id="dropdown-graph-type-btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Graph: 3D Scatterplot
@@ -73,6 +74,7 @@
                       <a class="dropdown-item dropdown-three-d-scatterplot" href="#">3D Scatterplot</a>
                     </div>
                   </div>
+-->
                 </h6>
                 <div id="artwork-plot-lab" class="artwork-plot"></div>
                 <div id="artwork-plot-rgb" class="artwork-plot" style="display:none;"></div>
