@@ -13,3 +13,4 @@ Concept and Development: Asil ÇETIN, Go SUGIMOTO
 - Clone the repository into your localhost where you're running a web server with PHP7.
 - Either test out the app with the existing /data folder or delete it and rename the /data_empty to /data to start from scratch.
 - Use "Add Artwork" page to ingest new artwork metadata to your collection.
+- You can customise Header and Footer templates by renaming the config-sample.php to config.php and changing the header and footer template variables to new files under a newly created /custom-templates directory in the root of the application. As stated in the .gitignore file both this directory and the config.php will be ignored by git.
